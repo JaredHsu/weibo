@@ -28,6 +28,12 @@ class UsersController extends Controller
     	return view('users.show', compact('user'));
     }
 
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
+    }
+
     public function store(Request $request)
     {
     	$this->validate($request, [
